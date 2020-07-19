@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Rezerviši karte</title>
+    <link rel="stylesheet" th:href="@{/stil.css}" type="text/css"/>
+</head>
+
+<center>
+
+	<ul>
+			<li><a th:href="${'/login'}">Ulogujte se</a></li>
+			<li><a th:href="${'/registracija'}">Registrujte se</a></li>
+			<li><a th:href="${'/ponuda-bioskopa'}">Pogledajte bioskope u ponudi</a></li>
+			<li><a th:href="${'/projekcije'}">Projekcije</a></li>
+			<li><a th:href="${'/moj-profil'}">Moj profil</a></li>
+			<li><a th:href="${'/odjava'}">Odjavite se</a></li>
+	</ul>
+	
+	<h1>Rezervacija karata za željenu projekciju</h1>
+	
+	<div>
+	
+	
+		<form th:action="@{/prikazi/{id}/izaberi-salu/{salaId}/rezervisi (id = ${raspored.id} , salaId = ${sala.id})}" th:object="${karta}" method="post">
+		
+			<label for="brojKarata">Broj karata:</label>
+			<input id="brojKarata" type="number" th:field="*{brojKarata}" required/>
+			<br>
+            <input type="submit" value="Potvrda">
+            <br>
+            <div th:if="${#bools.isTrue(check)}">
+                <div>
+                    Incorrect or incomplete
+                </div>
+            </div>
+			
+		</form>
+	
+	
+	
+	</div>
+	
+	
+</center>
+
+</html>

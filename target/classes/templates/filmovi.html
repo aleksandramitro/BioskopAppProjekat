@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	
+<head>
+    <meta charset="UTF-8">
+    <title>Filmovi</title>
+    <link rel="stylesheet" th:href="@{/stil.css}"/>
+</head>
+<body>
+<div>
+	<center>
+	
+	<ul>
+		<li><a th:href="${'/login'}">Ulogujte se</a></li>
+		<li><a th:href="${'/registracija'}">Registrujte se</a></li>
+		<li><a th:href="${'/ponuda-bioskopa'}">Pogledajte bioskope u ponudi</a></li>
+		<li><a th:href="${'/projekcije'}">Projekcije</a></li>
+		<li><a th:href="${'/moj-profil'}">Moj profil</a></li>
+		<li><a th:href="${'/odjava'}">Odjavite se</a></li>
+	</ul>
+	
+	<h1>Filmovi u ponudi</h1>
+		<table>
+			<tr>
+				<th>Id</th>
+				<th>Naziv</th>
+				<th>Opis</th>
+				<th>Žanr</th>
+				<th>Trajanje</th>
+				<th>Ocena</th>
+				<th>Dodavanje u listu termina</th>
+			</tr>
+			
+			<tr th:each="film : ${filmovi}">
+                <td th:text="${film.id}"></td>
+                <td th:text="${film.naziv}"></td>
+                <td th:text="${film.opis}"></td>
+                <td th:text="${film.zanr}"></td>
+                <td th:text="${film.trajanje}"></td>
+                <td th:text="${film.ocena}"></td>
+                <td><a th:href="${'/dodaj-film/' + film.id}">Dodaj u listu termina</a></td>
+            </tr>
+		</table>
+	</center>
+	
+</div>
+
+</html>

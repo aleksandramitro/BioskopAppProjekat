@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org", "http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>Prikazi projekciju</title>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" th:href="@{/stil.css}"/>
+	</head>
+
+<center>
+
+	<ul>
+		<li><a th:href="${'/login'}">Ulogujte se</a></li>
+		<li><a th:href="${'/registracija'}">Registrujte se</a></li>
+		<li><a th:href="${'/ponuda-bioskopa'}">Pogledajte bioskope u ponudi</a></li>
+		<li><a th:href="${'/projekcije'}">Projekcije</a></li>
+		<li><a th:href="${'/moj-profil'}">Moj profil</a></li>
+		<li><a th:href="${'/odjava'}">Odjavite se</a></li>
+	</ul>
+	
+	<h1>Projekcija</h1>
+	
+	<table>
+		
+			<tr>
+				<th>Id</th>
+				<th>Naziv filma</th>
+				<th>Zanr</th>
+				<th>Opis</th>
+				<th>Trajanje</th>
+				<th>Ocena</th>
+				<th>Cena</th>
+				<th>Vreme</th>
+				<th>Rezervišite svoje mesto!</th>
+
+			</tr>
+			
+			<tr>
+                <td th:text="${raspored.id}"></td>
+                <td th:text="${raspored.film.naziv}"></td>
+                <td th:text="${raspored.film.zanr}"></td>
+                <td th:text="${raspored.film.opis}"></td>
+                <td th:text="${raspored.film.trajanje}"></td>
+                <td th:text="${raspored.film.ocena}"></td>
+                <td th:text="${raspored.cena}"></td>
+                <td th:text="${raspored.datumVreme}"></td>
+                <td><a th:href="@{/prikazi/{id}/izaberi-salu (id = ${raspored.id} )}">Rezervišite svoje mesto!</a></td>
+
+            </tr>
+		
+		</table>
+		
+		<br>
+		
+		<img src="/slike/film.png">
+</center>
+
+</html>
