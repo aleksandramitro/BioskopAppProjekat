@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	
+<head>
+    <meta charset="UTF-8">
+    <title>Menadžeri</title>
+    <link rel="stylesheet" th:href="@{/stil.css}"/>
+</head>
+<body>
+<div>
+	<center>
+	
+	<ul>
+		<li><a th:href="${'/login'}">Ulogujte se</a></li>
+		<li><a th:href="${'/registracija'}">Registrujte se</a></li>
+		<li><a th:href="${'/ponuda-bioskopa'}">Pogledajte bioskope u ponudi</a></li>
+		<li><a th:href="${'/projekcije'}">Projekcije</a></li>
+		<li><a th:href="${'/moj-profil'}">Moj profil</a></li>
+		<li><a th:href="${'/odjava'}">Odjavite se</a></li>
+	</ul>
+	
+	<h1>Menadžeri</h1>
+		<table>
+			<tr>
+				<th>Id</th>
+				<th>Korisničko ime</th>
+				<th>Ime</th>
+				<th>Prezime</th>
+				<th>Broj Telefona</th>
+				<th>Email</th>
+				<th>Datum rodjenja</th>
+				<th>Ukloni menadžera</th>
+				<th>Dodeli bioskop</th>
+				<th>Otkaz biskopa</th>
+			</tr>
+			
+			<tr th:each="menadzer : ${menadzeri}">
+                <td th:text="${menadzer.id}"></td>
+                <td th:text="${menadzer.korisnickoIme}"></td>
+                <td th:text="${menadzer.ime}"></td>
+                <td th:text="${menadzer.prezime}"></td>
+                <td th:text="${menadzer.brojTelefona}"></td>
+                <td th:text="${menadzer.email}"></td>
+                <td th:text="${menadzer.datumRodjenja}"></td>
+                <td><a th:href="${'/ukloni-menadzera/' + menadzer.id}">Ukloni menadžera</a></td>
+                <td><a th:href="${'/dodeli-bioskop/' + menadzer.id}">Dodeli bioskop</a></td>
+                <td><a th:href="${'/otkaz-bioskopa/' + menadzer.id}">Otkaz biskopa</a></td>
+            </tr>
+		</table>
+	</center>
+	
+</div>
+
+</html>

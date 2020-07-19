@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org", "http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>Projekcije</title>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" th:href="@{/stil.css}"/>
+	</head>
+
+<center>
+
+	<ul>
+		<li><a th:href="${'/login'}">Ulogujte se</a></li>
+		<li><a th:href="${'/registracija'}">Registrujte se</a></li>
+		<li><a th:href="${'/ponuda-bioskopa'}">Pogledajte bioskope u ponudi</a></li>
+		<li><a th:href="${'/projekcije'}">Projekcije</a></li>
+		<li><a th:href="${'/moj-profil'}">Moj profil</a></li>
+		<li><a th:href="${'/odjava'}">Odjavite se</a></li>
+	</ul>
+	
+	<h1>Projekcije</h1>
+	
+		<div>
+		
+		<h3>Pretraga tekstualnih parametara</h3>
+	
+		<form th:action="@{/pretraziProjekcije}" th:object="${pretragaDTO}" method="post">
+            <label for="naziv">Naziv filma:</label>
+            <input id="naziv" type="text" th:field="*{naziv}"/>
+            <br>
+            <label for="zanr">Žanr:</label>
+            <input id="zanr" type="text" th:field="*{zanr}"/>
+            <br>
+            <label for="opis">Opis:</label>
+            <input id="opis" type="text" th:field="*{opis}"/>
+            <br>
+            <label for="ocena">Ocena:</label>
+           	 <input id="ocena" type="number" th:field="*{ocena}"/>
+            <br>
+            <label for="cena">Cena:</label>
+           	 <input id="cena" type="number" step="0.1" th:field="*{cena}"/>
+           	 <br>
+            <input type="submit" value = "Pretraži">
+        </form>
+        
+        <br>
+       
+         <h3>Pretraga po vremenu projekcije</h3>
+        
+        <form th:action="@{/pretraziVremeProjekcija}" th:object="${pretragaVremenaDTO}" method="post">
+        
+        	 <label for="vreme">Vreme:</label>
+           	 <input id="vreme" type="datetime-local" th:field="*{vreme}"/>
+           	 <br>
+           	 <input type="submit" value = "Pretraži">
+        	
+        </form>  
+ 
+		
+		<br>
+		
+		<h3>Sortiraj filmove po ceni projekcije</h3>
+		
+		<form th:action="@{/sortirajFilmove}" th:object="${sortiranjeDTO}" method="post">
+			
+			<label for="sortiranje">Sortiranje:</label>
+            <select type="text" th:field="*{sortiranje}">
+                <option value="RASTUCE">Rastuce cene</option>
+                <option value="OPADAJUCE">Opadajuce cene</option>
+
+            </select>
+            <br>
+			 <input type="submit" value = "Sortiraj">
+		</form>
+		
+		</div>
+		
+		<br>
+		
+		<table>
+		
+			<tr>
+				<th>Id</th>
+				<th>Naziv filma</th>
+				<th>Žanr</th>
+				<th>Opis</th>
+				<th>Trajanje</th>
+				<th>Ocena</th>
+				<th>Cena</th>
+				<th>Vreme</th>
+				<th>Bioskop</th>
+				<th>Prikaži projekciju</th>
+
+			</tr>
+			
+			<tr th:each="raspored : ${rasporedi}">
+                <td th:text="${raspored.id}"></td>
+                <td th:text="${raspored.film.naziv}"></td>
+                <td th:text="${raspored.film.zanr}"></td>
+                <td th:text="${raspored.film.opis}"></td>
+                <td th:text="${raspored.film.trajanje}"></td>
+                <td th:text="${raspored.film.ocena}"></td>
+                <td th:text="${raspored.cena}"></td>
+                <td th:text="${raspored.datumVreme}"></td>
+                <td th:text="${raspored.bioskop.naziv}"></td>
+                <td><a th:href="${'/prikazi/' + raspored.id}">Prikaži projekciju</a></td>
+            </tr>
+		
+		</table>
+		
+</center>
+
+</html>

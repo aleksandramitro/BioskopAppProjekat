@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	
+<head>
+    <meta charset="UTF-8">
+    <title>Profil gledaoca</title>
+    <link rel="stylesheet" th:href="@{/stil.css}"/>
+</head>
+
+<center>
+	<ul>
+		<li><a th:href="${'/login'}">Ulogujte se</a></li>
+		<li><a th:href="${'/registracija'}">Registrujte se</a></li>
+		<li><a th:href="${'/ponuda-bioskopa'}">Pogledajte bioskope u ponudi</a></li>
+		<li><a th:href="${'/projekcije'}">Projekcije</a></li>
+		<li><a th:href="${'/moj-profil'}">Moj profil</a></li>
+		<li><a th:href="${'/odjava'}">Odjavite se</a></li>
+	</ul>
+	
+	<h1>Profil gledaoca</h1>
+
+		<table>
+		
+			<tr>
+			
+				<th>Korisničko ime</th>
+				<th>Ime</th>
+				<th>Prezime</th>
+				<th>Broj telefona</th>
+				<th>Email</th>
+				<th>Datum rođenja</th>
+				<th>Uloga</th>
+
+			</tr>
+			
+			<tr>
+				<td th:text="${korisnik.korisnickoIme}"></td>
+				<td th:text="${korisnik.ime}"></td>
+				<td th:text="${korisnik.prezime}"></td>
+				<td th:text="${korisnik.brojTelefona}"></td>
+				<td th:text="${korisnik.email}"></td>
+				<td th:text="${korisnik.datumRodjenja}"></td>
+				<td th:text="${korisnik.uloga}"></td>
+			</tr>
+		
+		</table>
+	
+		<h4><a th:href = "${'/odgledani-filmovi'}">Odgledani filmovi</a></h4>
+		<br>
+		<h4><a th:href = "${'/ocenjeni-filmovi'}">Ocenjeni filmovi</a></h4>
+		<br>
+		<h4><a th:href = "${'/rezervisane-karte'}">Rezervisane karte</a></h4>
+		<br>
+		<h4><a th:href = "${'/neocenjeni-filmovi'}">Neocenjeni filmovi</a></h4>
+</center>
+
+</html>

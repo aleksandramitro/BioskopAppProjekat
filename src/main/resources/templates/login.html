@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/stil.css}"/>
+</head>
+<body>
+<div>
+	<center>
+	
+		
+		<ul>
+			<li><a th:href="${'/login'}">Ulogujte se</a></li>
+			<li><a th:href="${'/registracija'}">Registrujte se</a></li>
+			<li><a th:href="${'/ponuda-bioskopa'}">Pogledajte bioskope u ponudi</a></li>
+			<li><a th:href="${'/projekcije'}">Projekcije</a></li>
+			<li><a th:href="${'/moj-profil'}">Moj profil</a></li>
+			<li><a th:href="${'/odjava'}">Odjavite se</a></li>
+		</ul>
+		
+		<h1>Prijavite se</h1>
+		
+		<div>
+		
+		<form th:action="@{/potvrda}" th:object="${ulogovanKorisnik}" method="post">
+		
+				<label for="korisnickoIme">Korisničko ime:</label>
+                <input id="korisnickoIme" type="text" th:field="*{korisnickoIme}" required/>
+                <br>
+                <label for="lozinka">Lozinka:</label>
+                <input id="lozinka" type="password" th:field="*{lozinka}" required/>
+                <br>
+                <input class="pure-button" type="submit" value="Potvrda">
+                <div th:if="${#bools.isTrue(check)}">
+                    <div>
+                        Invalid username or password.
+                    </div>
+                </div>
+		</form>
+		
+		</div>
+	</center>
+</div>
+</body>
+</html>

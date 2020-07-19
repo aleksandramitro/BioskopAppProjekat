@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registracija</title>
+    <link rel="stylesheet" th:href="@{/stil.css}"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/js/registracija.js" type="text/javascript"></script>
+</head>
+
+<center>
+
+	<ul>
+			<li><a th:href="${'/login'}">Ulogujte se</a></li>
+			<li><a th:href="${'/registracija'}">Registrujte se</a></li>
+			<li><a th:href="${'/ponuda-bioskopa'}">Pogledajte bioskope u ponudi</a></li>
+			<li><a th:href="${'/projekcije'}">Projekcije</a></li>
+			<li><a th:href="${'/moj-profil'}">Moj profil</a></li>
+			<li><a th:href="${'/odjava'}">Odjavite se</a></li>
+	</ul>
+	<h1>Registracija</h1>
+	<div>
+	
+		<form th:action="@{/sacuvaj-korisnika}" th:object="${korisnik}" method="post">
+		
+			<label for="korisnickoIme">Korisničko ime:</label>
+			<input id="korisnickoIme" type="text" th:field="*{korisnickoIme}" required/>
+			<br>
+			<label for="lozinka">Lozinka:</label>
+			<input id="lozinka" type="password" th:field="*{lozinka}" required/>
+			<br>
+			<label for="ime">Ime:</label>
+			<input id="ime" type="text" th:field="*{ime}" required/>
+			<br>
+			<label for="prezime">Prezime:</label>
+			<input id="prezime" type="text" th:field="*{prezime}" required/>
+			<br>
+			<label for="brojTelefona">Broj telefona:</label>
+			<input id="brojTelefona" type="text" th:field="*{brojTelefona}" required/>
+			<br>
+			<label for="email">Email adresa:</label>
+			<input id="email" type="text" th:field="*{email}" required/>
+			<br>
+			<label for="datumRodjenja">Datum rođenja:</label>
+			<input id="datumRodjenja" type="date" th:field="*{datumRodjenja}" required/>
+			<br>
+         	<input type="submit" value="Potvrda">
+            <br>
+            <div th:if="${#bools.isTrue(check)}">
+                <div>
+                    Incorrect or incomplete registration
+                </div>
+            </div>
+			
+		</form>
+	
+	
+	
+	</div>
+
+
+
+</center>
+	
+</html>

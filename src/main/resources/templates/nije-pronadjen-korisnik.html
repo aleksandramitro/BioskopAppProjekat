@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Nije pronadjen korisnik</title>
+    <link rel="stylesheet" th:href="@{/stil.css}"/>
+</head>
+
+<center>
+
+<ul>
+	<li><a th:href="${'/login'}">Ulogujte se</a></li>
+	<li><a th:href="${'/registracija'}">Registrujte se</a></li>
+	<li><a th:href="${'/ponuda-bioskopa'}">Pogledajte bioskope u ponudi</a></li>
+	<li><a th:href="${'/projekcije'}">Projekcije</a></li>
+	<li><a th:href="${'/moj-profil'}">Moj profil</a></li>
+	<li><a th:href="${'/odjava'}">Odjavite se</a></li>
+</ul>
+
+<h1>Nije pronadjen korisnik sa datim imenom ili lozinkom, registrujte se ili pokusajte prijavu ponovo!</h1>
+
+</center>
+	
+</html>

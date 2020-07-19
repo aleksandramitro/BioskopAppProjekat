@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Izmena bioskopa</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/stil.css}" />
+</head>
+
+<center>
+
+	<ul>
+			<li><a th:href="${'/login'}">Ulogujte se</a></li>
+			<li><a th:href="${'/registracija'}">Registrujte se</a></li>
+			<li><a th:href="${'/ponuda-bioskopa'}">Pogledajte bioskope u ponudi</a></li>
+			<li><a th:href="${'/projekcije'}">Projekcije</a></li>
+			<li><a th:href="${'/moj-profil'}">Moj profil</a></li>
+			<li><a th:href="${'/odjava'}">Odjavite se</a></li>
+	</ul>
+	
+	<h1>Izmena bioskopa</h1>
+	
+	<div>
+	
+	
+	<form th:action="@{/izmeni-bioskop/{id}/potvrda-izmene (id = ${bioskop.id})}" th:object="${bioskop}" method="post">
+		
+		<label for="naziv">Naziv:</label>
+			<input id="naziv" type="text" th:field="*{naziv}"/>
+			<br>
+			<label for="adresa">Adresa:</label>
+			<input id="adresa" type="text" th:field="*{adresa}"/>
+			<br>
+			<label for="brojTelefona">Broj telefona:</label>
+			<input id="brojTelefona" type="text" th:field="*{brojTelefona}"/>
+			<br>
+			<label for="email">Email:</label>
+			<input id="email" type="text" th:field="*{email}"/>
+			<br>
+            <input type="submit" value="Potvrda">
+            <br>
+            <div th:if="${#bools.isTrue(check)}">
+                <div>
+                    Incorrect or incomplete registration
+                </div>
+            </div>
+	
+	</form>
+	
+	</div>
+	
+</center>
+
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org", "http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>Bioskopi</title>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" th:href="@{/stil.css}"/>
+	</head>
+
+<center>
+
+	<ul>
+		<li><a th:href="${'/login'}">Ulogujte se</a></li>
+		<li><a th:href="${'/registracija'}">Registrujte se</a></li>
+		<li><a th:href="${'/ponuda-bioskopa'}">Pogledajte bioskope u ponudi</a></li>
+		<li><a th:href="${'/projekcije'}">Projekcije</a></li>
+		<li><a th:href="${'/moj-profil'}">Moj profil</a></li>
+		<li><a th:href="${'/odjava'}">Odjavite se</a></li>
+	</ul>
+	
+	<h1>Bioskopi</h1>
+		
+		<table>
+		
+			<tr>
+				<th>Id</th>
+				<th>Naziv</th>
+				<th>Adresa</th>
+				<th>Broj telefona</th>
+				<th>Email</th>
+				<th>Dodeli</th>
+				
+			</tr>
+			
+			<tr th:each="bioskop : ${bioskopi}">
+                <td th:text="${bioskop.id}"></td>
+                <td th:text="${bioskop.naziv}"></td>
+                <td th:text="${bioskop.adresa}"></td>
+                <td th:text="${bioskop.brojTelefona}"></td>
+                <td th:text="${bioskop.email}"></td>
+                <td><a th:href="@{/dodaj-bioskop/{rasporedId}/projekcije-bioskop/{bioskopId} (rasporedId = ${raspored.id} , bioskopId = ${bioskop.id})}">Dodeli</a></td>
+                
+            </tr>
+		
+		</table>
+		
+		
+</center>
+
+</html>
